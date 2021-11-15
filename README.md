@@ -38,7 +38,7 @@ with JSON body:
 ### Set a vehicle for service block
 `POST /vehicles/:id/block`
 
-U### nblock a vehicle
+### Unblock a vehicle
 `POST /vehicles/:id/unblock`
 
 ## Bookings
