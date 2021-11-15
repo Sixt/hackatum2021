@@ -19,13 +19,13 @@ Base URL  `https://us-central1-sixt-hackatum-2021.cloudfunctions.net/api`
 
 ## Vehicles
 
-Fetching all vehicles
+### Fetching all vehicles
 `GET /vehicles`
 
-Fetching a single vehicle by ID
+### Fetching a single vehicle by ID
 `GET /vehicles/:id`
 
-Updating the coordinates of a vehicle
+#### Updating the coordinates of a vehicle
 `POST /vehicles/:id/coordinates`
 with JSON body:
 ```
@@ -35,22 +35,21 @@ with JSON body:
 }
 ```
 
-
-Set a vehicle for service block
+### Set a vehicle for service block
 `POST /vehicles/:id/block`
 
-Unblock a vehicle
+U### nblock a vehicle
 `POST /vehicles/:id/unblock`
 
 ## Bookings
 
-Fetching all bookings
+### Fetching all bookings
 `GET /bookings`
 
-Fetching a single booking by ID
+### Fetching a single booking by ID
 `GET /bookings/:id`
 
-Create a booking
+### Create a booking
 `POST /bookings`
 with JSON body:
 ```
@@ -62,16 +61,16 @@ with JSON body:
 }
 ```
 
-Cancel a booking by ID
+### Cancel a booking by ID
 `DELETE /bookings/:id`
 
-Assign a vehicle to a booking
+### Assign a vehicle to a booking
 `POST /bookings/:id/assignVehicle/:vehicleId`
 
-If the vehicle arrived at the pickup location the passenger needs to confirm that he/she got in the car
+### If the vehicle arrived at the pickup location the passenger needs to confirm that he/she got in the car
 `POST /bookings/:id/passengerGotOn`
 
-If the vehicle arrived at the pickup location the passenger needs to confirm that he/she got off the car
+### If the vehicle arrived at the pickup location the passenger needs to confirm that he/she got off the car
 `POST /bookings/:id/passengerGotOff`
 
 ## Booking lifecycle
