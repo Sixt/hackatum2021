@@ -87,7 +87,7 @@ We are a international team with 300+ engineers always looking for new talented 
 
 You are a student and looking for a great working student opportunity (or get in touch with us during the Hackaton):
 
-- Frontend (React) Engineerin: https://www.sixt.jobs/de/job/60168
+- Frontend (React) Engineering: https://www.sixt.jobs/de/job/60168
 - Backend Cloud Engineering (Go/Java): https://www.sixt.jobs/de/job/60169
 - iOS or Android Engineering: https://www.sixt.jobs/de/job/60175
 
