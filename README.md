@@ -8,6 +8,7 @@ Some ideas:
 - Where should a vehicle go after a passenger dropped off? The car can't just wait on a busy street.
 - Which vehicle fits best for serving a booking?
 - For development we probably need a automatic simulator for our booking engine
+- Build trust
 - Come up with your own idea!
 
 
