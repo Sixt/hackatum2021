@@ -19,7 +19,7 @@ const create = async (req,res) => {
         await doc.set(data)
         res.status(200).json(data)
     } catch(error) {
-        console.log(error)
+        console.error(error)
         return res.status(500).json({
             code: 'error_internal_server_error'
         })
@@ -35,6 +35,7 @@ const list = async (req,res) => {
         })
         res.status(200).json(data)
     } catch (error) {
+        console.error(error)
         return res.status(500).json({
             code: 'error_internal_server_error'
         })
@@ -46,6 +47,7 @@ const get = async (req,res) => {
         const booking = (await req.db.collection(collection).doc(req.params.id).get()).data()
         res.status(200).json(booking)
     } catch (error) {
+        console.error(error)
         return res.status(500).json({
             code: 'error_internal_server_error'
         })
@@ -63,6 +65,7 @@ const cancel = async (req,res) => {
         await req.db.collection(collection).doc(req.params.id).delete()
         res.status(200).json({deleted: req.params.id})
     } catch (error) {
+        console.error(error)
         return res.status(500).json({
             code: 'error_internal_server_error'
         })
@@ -81,7 +84,6 @@ const assignVehicle = async (req,res) => {
         }
 
         const vehicle = (await req.db.collection('vehicles').doc(req.params.vehicleId).get()).data()
-        console.log(vehicle)
         if (!vehicle || vehicle.status !== 'FREE') {
             return res.status(403).json({
                 code: 'error_vehicle_not_free'
@@ -100,7 +102,7 @@ const assignVehicle = async (req,res) => {
         booking = (await req.db.collection(collection).doc(req.params.id).get()).data()
         res.status(200).json(booking)
     } catch (error) {
-        console.log(error)
+        console.error(error)
         return res.status(500).json({
             code: 'error_internal_server_error'
         })
@@ -129,7 +131,7 @@ const passengerGotOn = async (req,res) => {
         booking = (await req.db.collection(collection).doc(req.params.id).get()).data()
         res.status(200).json(booking)
     } catch (error) {
-        console.log(error)
+        console.error(error)
         return res.status(500).json({
             code: 'error_internal_server_error'
         })
@@ -159,6 +161,7 @@ const passengerGotOff = async (req,res) => {
         booking = (await req.db.collection(collection).doc(req.params.id).get()).data()
         res.status(200).json(booking)
     } catch (error) {
+        console.error(error)
         return res.status(500).json({
             code: 'error_internal_server_error'
         })

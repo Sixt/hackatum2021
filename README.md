@@ -35,6 +35,15 @@ with JSON body:
 }
 ```
 
+#### Updating the battery charge of a vehicle (0-100)
+`POST /vehicles/:id/charge`
+with JSON body:
+```
+{
+	"charge": 95
+}
+```
+
 ### Set a vehicle for service block
 `POST /vehicles/:id/block`
 

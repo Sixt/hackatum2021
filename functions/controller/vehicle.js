@@ -9,6 +9,7 @@ const list = async (req, res) => {
         })
         res.status(200).json(data)
     } catch (error) {
+        console.log(error)
         return res.status(500).json({
             code: 'error_internal_server_error'
         })
@@ -20,6 +21,7 @@ const get = async (req, res) => {
         const vehicle = (await req.db.collection(collection).doc(req.params.id).get()).data()
         res.status(200).json(vehicle)
     } catch (error) {
+        console.log(error)
         return res.status(500).json({
             code: 'error_internal_server_error'
         })
@@ -44,7 +46,31 @@ const updateCoordinates = async (req,res) => {
         res.status(200).json(vehicle)
 
     } catch(error) {
-        console.log(error.code)
+        console.error(error)
+        return res.status(500).json({
+            code: 'error_internal_server_error'
+        })
+    }
+}
+
+const updateCharge = async (req,res) => {
+    try {
+
+        if (isNaN(req.body.charge) || req.body.charge < 0 || req.body.charge > 100) {
+            return res.status(400).json({
+                code: 'error_invalid_charge_value'
+            })
+        }
+
+        await req.db.collection(collection).doc(req.params.id).update({
+            charge: req.body.charge
+        })
+
+        const vehicle = (await req.db.collection(collection).doc(req.params.id).get()).data()
+        res.status(200).json(vehicle)
+
+    } catch(error) {
+        console.error(error)
         return res.status(500).json({
             code: 'error_internal_server_error'
         })
@@ -70,7 +96,7 @@ const serviceBlock = async (req,res) => {
         res.status(200).json(vehicle)
 
     } catch(error) {
-        console.log(error.code)
+        console.error(error)
         return res.status(500).json({
             code: 'error_internal_server_error'
         })
@@ -96,7 +122,7 @@ const serviceUnblock = async (req,res) => {
         res.status(200).json(vehicle)
 
     } catch(error) {
-        console.log(error.code)
+        console.error(error)
         return res.status(500).json({
             code: 'error_internal_server_error'
         })
@@ -104,5 +130,5 @@ const serviceUnblock = async (req,res) => {
 }
 
 module.exports = {
-    list, get, updateCoordinates, serviceBlock, serviceUnblock
+    list, get, updateCoordinates, serviceBlock, serviceUnblock, updateCharge
 }
