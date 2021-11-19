@@ -45,6 +45,9 @@ const list = async (req,res) => {
 const get = async (req,res) => {
     try {
         const booking = (await req.db.collection(collection).doc(req.params.id).get()).data()
+        if (!booking) {
+            return res.status(404).json({error: 'error_not_found'})
+        }
         res.status(200).json(booking)
     } catch (error) {
         console.error(error)

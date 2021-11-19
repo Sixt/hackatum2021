@@ -9,7 +9,7 @@ const list = async (req, res) => {
         })
         res.status(200).json(data)
     } catch (error) {
-        console.log(error)
+        console.error(error)
         return res.status(500).json({
             code: 'error_internal_server_error'
         })
@@ -19,9 +19,12 @@ const list = async (req, res) => {
 const get = async (req, res) => {  
     try {
         const vehicle = (await req.db.collection(collection).doc(req.params.id).get()).data()
+        if (!vehicle) {
+            return res.status(404).json({error: 'error_not_found'})
+        }
         res.status(200).json(vehicle)
     } catch (error) {
-        console.log(error)
+        console.error(error)
         return res.status(500).json({
             code: 'error_internal_server_error'
         })
@@ -81,7 +84,6 @@ const serviceBlock = async (req,res) => {
     try {
 
         let vehicle = (await req.db.collection(collection).doc(req.params.id).get()).data()
-        console.log(vehicle)
         if (!vehicle || vehicle.status !== 'FREE') {
             return res.status(403).json({
                 code: 'error_vehicle_not_free'
